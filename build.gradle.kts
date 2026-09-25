@@ -2,9 +2,21 @@
 
 import org.jetbrains.kotlin.gradle.ExperimentalWasmDsl
 import org.jetbrains.kotlin.gradle.targets.js.webpack.KotlinWebpackConfig
+import org.jetbrains.kotlin.gradle.targets.wasm.nodejs.WasmNodeJsEnvSpec
+import org.jetbrains.kotlin.gradle.targets.wasm.nodejs.WasmNodeJsPlugin
+import org.jetbrains.kotlin.gradle.targets.wasm.yarn.WasmYarnRootEnvSpec
+import org.jetbrains.kotlin.gradle.targets.wasm.yarn.WasmYarnPlugin
 
 plugins {
     alias(libs.plugins.kotlinMultiplatform) 
+}
+
+plugins.withType<WasmNodeJsPlugin> {
+    the<WasmNodeJsEnvSpec>().download.set(false)
+}
+
+rootProject.plugins.withType<WasmYarnPlugin> {
+    rootProject.the<WasmYarnRootEnvSpec>().download.set(false)
 }
 
 group = "me.user"
