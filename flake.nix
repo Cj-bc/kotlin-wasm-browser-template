@@ -9,11 +9,11 @@
       let pkgs = import nixpkgs { system = system; };
       in {
         packages.${system}.default = pkgs.stdenv.mkDerivation {
-          buildInputs = [ pkgs.jdk25 ];
+          buildInputs = [ pkgs.jdk21 ];
         };
 
         devShells.${system}.default = pkgs.mkShell {
-          packages = [ pkgs.jdk25 ];
+          packages = [ pkgs.jdk21 ];
         };
       }
     );
