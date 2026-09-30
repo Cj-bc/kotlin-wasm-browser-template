@@ -9,11 +9,11 @@
       let pkgs = import nixpkgs { system = system; };
       in {
         packages.${system}.default = pkgs.stdenv.mkDerivation {
-          buildInputs = [ pkgs.jdk21 pkgs.nodejs_26 pkgs.yarn-berry ];
+          buildInputs = [ pkgs.jdk21 pkgs.nodejs_26 pkgs.yarn ];
         };
 
         devShells.${system}.default = pkgs.mkShell {
-          packages = [ pkgs.jdk21 pkgs.nodejs_26 pkgs.yarn-berry ];
+          packages = [ pkgs.jdk21 pkgs.nodejs_26 pkgs.yarn ];
         };
       }
     );
